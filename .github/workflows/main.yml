@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - name: hello world js action
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
         id: hello
-        uses: v-stache/hello-world-javascript-action@master
         with:
-          who-to-greet: "xingyu"
+          who-to-greet: "xingyu2"
       - name: get output
         run: echo "The time was ${{steps.hello.outputs.time}}"
